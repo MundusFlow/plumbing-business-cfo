@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plumbing Business CFO &mdash; Free Calculators</title>
+
+  <!-- TODO: add Google Analytics once a GA4 property exists for this site -->
+
+  <!-- Open Graph tags: control how this page looks when shared as a link
+       (Slack, iMessage, Facebook, LinkedIn, etc. all read these) -->
+  <meta property="og:title" content="Plumbing Business CFO">
+  <meta property="og:description" content="Five free calculators for plumbing contractors: quote a job, check job profit, set your hourly rate, reserve for taxes, and see your business runway.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mundusflow.github.io/plumbing-business-cfo/">
+  <meta property="og:image" content="https://mundusflow.github.io/plumbing-business-cfo/images/screenshot-dashboard.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Plumbing Business CFO">
+  <meta name="twitter:description" content="Five free calculators for plumbing contractors: quote a job, check job profit, set your hourly rate, reserve for taxes, and see your business runway.">
+  <meta name="twitter:image" content="https://mundusflow.github.io/plumbing-business-cfo/images/screenshot-dashboard.png">
+
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+  <div class="brandbar">
+    <div class="brandbar-inner">
+      <a href="https://mundusflow.github.io/"><img src="images/mundusflow-logo.png" alt="Mundusflow" class="brandbar-logo"></a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>&#128703; What Is Your Plumbing Business Actually Making You?</h1>
+      <p class="subtitle">Five quick calculators to price jobs, check profit, and reserve for taxes&mdash;then run it all with the Plumbing Business CFO.</p>
+    </div>
+  </header>
+
+  <div class="page">
+
+    <div class="card" id="quote-bid">
+      <h2>Quote / Bid Calculator</h2>
+      <p>Build a job quote that actually covers your costs and pays you.</p>
+      <p class="privacy-note">&#128274; Runs entirely in your browser &mdash; nothing you enter is sent or stored.</p>
+      <button type="button" class="clear-link" id="q_clearBtn">Clear and enter your own numbers</button>
+
+      <label for="q_materials">Materials cost (pipe, fittings, fixtures)</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="q_materials" value="420" placeholder="0">
+      </div>
+
+      <label for="q_materialsMarkup">Markup on materials</label>
+      <p class="field-hint">What you add on top of materials cost to cover sourcing &amp; handling.</p>
+      <div class="input-group input-group-suffix">
+        <input type="number" id="q_materialsMarkup" value="15">
+        <span class="input-suffix">%</span>
+      </div>
+
+      <label for="q_laborHours">Estimated labor hours</label>
+      <input type="number" id="q_laborHours" value="4" placeholder="0">
+
+      <label for="q_laborRate">Labor rate (per hour)</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="q_laborRate" value="85" placeholder="0">
+      </div>
+
+      <label for="q_permits">Permit / inspection fees</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="q_permits" value="60" placeholder="0">
+      </div>
+
+      <label class="checkbox-label" for="q_emergency">
+        <input type="checkbox" id="q_emergency">
+        Emergency / after-hours job? <span class="field-hint-inline">(adds a 25% surcharge)</span>
+      </label>
+
+      <label for="q_profitMargin">Target profit margin</label>
+      <p class="field-hint">Extra buffer on top of cost + labor for profit and the unexpected.</p>
+      <div class="input-group input-group-suffix">
+        <input type="number" id="q_profitMargin" value="30">
+        <span class="input-suffix">%</span>
+      </div>
+
+      <button id="quoteBtn">Calculate Quote</button>
+
+      <div id="quoteResult" class="result"></div>
+
+      <p class="section-divider">About This Quote / Bid Calculator</p>
+      <div class="calc-explainer">
+        <p>A bid that only covers pipe, fittings, and labor is really just a break-even price &mdash; it pays your supplier and your time but not you. This calculator adds a profit buffer on top of your true costs, so every quote you hand a customer already has your margin built in before you ever touch a wrench.</p>
+        <p>Materials markup and labor are priced separately on purpose. Markup covers the drive to the supply house, sourcing, and the risk of carrying inventory; labor is priced on the hours the job will actually take. Bundling them into one number tends to underprice long rough-in jobs and overprice quick fixture swaps.</p>
+        <p>Permit and inspection fees are easy to forget when you're bidding fast between service calls, but they're real cash out of pocket before the job even starts. Emergency and after-hours calls carry their own risk &mdash; rushed parts runs, working alone at odd hours &mdash; which is why this calculator adds a surcharge automatically when you flag one.</p>
+        <p>A common question plumbers search for is &ldquo;what should I charge for a job?&rdquo; The honest answer: your real materials and labor cost, plus permits, plus enough margin to cover callbacks, warranty comebacks, and the weeks when work is slow. A 30% buffer is a starting point, not a rule.</p>
+      </div>
+    </div>
+
+    <div class="card" id="job-profit">
+      <h2>Job Profit Calculator</h2>
+      <p>See what a finished job actually made you, after every cost.</p>
+      <p class="privacy-note">&#128274; Runs entirely in your browser &mdash; nothing you enter is sent or stored.</p>
+      <button type="button" class="clear-link" id="jp_clearBtn">Clear and enter your own numbers</button>
+
+      <label for="jp_invoiced">Amount invoiced / collected</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="jp_invoiced" value="650" placeholder="0">
+      </div>
+
+      <label for="jp_materials">Materials cost</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="jp_materials" value="190" placeholder="0">
+      </div>
+
+      <label for="jp_labor">Labor cost</label>
+      <p class="field-hint">What you paid out in wages for this job, not what you billed.</p>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="jp_labor" value="210" placeholder="0">
+      </div>
+
+      <label for="jp_other">Other job costs</label>
+      <p class="field-hint">Permits, disposal fees, equipment rental, warranty/rework, etc.</p>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="jp_other" value="30" placeholder="0">
+      </div>
+
+      <button id="jobProfitBtn">Calculate Job Profit</button>
+
+      <div id="jobProfitResult" class="result"></div>
+
+      <p class="section-divider">About This Job Profit Calculator</p>
+      <div class="calc-explainer">
+        <p>Getting the job done isn't the same as getting paid for your time. This calculator checks what a finished job actually returned after materials, labor, and the costs that don't make it onto the invoice.</p>
+        <p>&ldquo;Other job costs&rdquo; is where profit quietly disappears &mdash; disposal fees, a rented drain camera, a warranty callback, a permit re-inspection. Plumbers who only track materials and labor consistently overestimate their real margin.</p>
+        <p>Margin percentage matters more than the dollar figure when you're comparing job types. A $400 profit on a $3,000 repipe (13% margin) is a very different result from $400 on a $600 drain cleaning call (67% margin) &mdash; one of those is a much better use of your day.</p>
+        <p>If a job comes back under margin, compare it against the original quote from the calculator above &mdash; the gap usually points to either an underbid scope or a job that ran into unexpected complexity.</p>
+      </div>
+    </div>
+
+    <div class="card" id="hourly-rate">
+      <h2>Hourly Rate Calculator</h2>
+      <p>Work out the minimum you need to charge per billable hour.</p>
+      <p class="privacy-note">&#128274; Runs entirely in your browser &mdash; nothing you enter is sent or stored.</p>
+      <button type="button" class="clear-link" id="hr_clearBtn">Clear and enter your own numbers</button>
+
+      <label for="hr_takeHome">Desired annual profit / take-home</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="hr_takeHome" value="55000" placeholder="0">
+      </div>
+
+      <p class="section-divider">Monthly overhead</p>
+
+      <div class="overhead-grid">
+        <div>
+          <label for="hr_truck">Truck &amp; fuel</label>
+          <div class="input-group">
+            <span class="input-prefix">$</span>
+            <input type="number" id="hr_truck" value="500" placeholder="0">
+          </div>
+        </div>
+        <div>
+          <label for="hr_insurance">Insurance</label>
+          <div class="input-group">
+            <span class="input-prefix">$</span>
+            <input type="number" id="hr_insurance" value="250" placeholder="0">
+          </div>
+        </div>
+        <div>
+          <label for="hr_tools">Tools &amp; equipment</label>
+          <p class="field-hint">Camera, jetter, snake, and other gear.</p>
+          <div class="input-group">
+            <span class="input-prefix">$</span>
+            <input type="number" id="hr_tools" value="300" placeholder="0">
+          </div>
+        </div>
+        <div>
+          <label for="hr_licensing">Licensing &amp; certs</label>
+          <div class="input-group">
+            <span class="input-prefix">$</span>
+            <input type="number" id="hr_licensing" value="100" placeholder="0">
+          </div>
+        </div>
+        <div>
+          <label for="hr_software">Software</label>
+          <div class="input-group">
+            <span class="input-prefix">$</span>
+            <input type="number" id="hr_software" value="50" placeholder="0">
+          </div>
+        </div>
+        <div>
+          <label for="hr_otherOverhead">Other overhead</label>
+          <div class="input-group">
+            <span class="input-prefix">$</span>
+            <input type="number" id="hr_otherOverhead" value="100" placeholder="0">
+          </div>
+        </div>
+      </div>
+
+      <p class="section-divider">Billable time</p>
+
+      <label for="hr_hoursPerWeek">Billable hours per week</label>
+      <p class="field-hint">Hours actually billed to customers, not total hours worked.</p>
+      <input type="number" id="hr_hoursPerWeek" value="26" placeholder="0">
+
+      <label for="hr_weeksPerYear">Weeks worked per year</label>
+      <input type="number" id="hr_weeksPerYear" value="48">
+
+      <button id="hourlyRateBtn">Calculate My Rate</button>
+
+      <div id="hourlyRateResult" class="result"></div>
+
+      <p class="section-divider">About This Hourly Rate Calculator</p>
+      <div class="calc-explainer">
+        <p>Charging what the plumber down the road charges tells you nothing about whether your rate covers your truck payment, insurance, and licensing. This calculator works backward from your real overhead and desired profit to your true minimum rate.</p>
+        <p>Billable hours &mdash; not hours the truck is running &mdash; is the number that matters here. A plumber on the road 40 hours a week but only billing 26 of them (the rest lost to driving, estimates, and parts runs) needs a real rate higher than a naive &ldquo;overhead &divide; 40 hours&rdquo; calculation would suggest.</p>
+        <p>Camera equipment, jetters, and snakes wear out and need replacing &mdash; spreading that cost across your overhead here keeps a big tool purchase from blindsiding your margin the month it happens.</p>
+        <p>This number is your floor, not your target. Once you know the minimum, your specialty, reputation, and local market determine how far above it you actually charge.</p>
+      </div>
+    </div>
+
+    <div class="card" id="tax-reserve">
+      <h2>Tax Reserve Calculator</h2>
+      <p>Estimate self-employment tax and income tax separately, not just a flat guess.</p>
+      <p class="privacy-note">&#128274; Runs entirely in your browser &mdash; nothing you enter is sent or stored.</p>
+      <button type="button" class="clear-link" id="tax_clearBtn">Clear and enter your own numbers</button>
+
+      <label for="tax_income">Income this period</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="tax_income" value="22000" placeholder="0">
+      </div>
+
+      <label for="tax_materials">Materials / COGS this period</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="tax_materials" value="6500" placeholder="0">
+      </div>
+
+      <label for="tax_expenses">Other business expenses</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="tax_expenses" value="900" placeholder="0">
+      </div>
+
+      <label for="tax_miles">Business miles driven</label>
+      <input type="number" id="tax_miles" value="380" placeholder="0">
+
+      <label for="tax_mileageRate">IRS mileage rate ($/mile)</label>
+      <p class="field-hint">Check irs.gov each year&mdash;this rate changes annually.</p>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="tax_mileageRate" value="0.70" step="0.01">
+      </div>
+
+      <label for="tax_bracket">Estimated federal tax bracket</label>
+      <select id="tax_bracket">
+        <option value="10">10%</option>
+        <option value="12" selected>12%</option>
+        <option value="22">22%</option>
+        <option value="24">24%</option>
+        <option value="32">32%</option>
+        <option value="35">35%</option>
+        <option value="37">37%</option>
+      </select>
+
+      <button id="taxBtn">Calculate Tax Reserve</button>
+
+      <div id="taxResult" class="result"></div>
+
+      <p class="section-divider">About This Tax Reserve Calculator</p>
+      <div class="calc-explainer">
+        <p>Self-employment tax catches a lot of plumbing contractors off guard because it's stacked on top of regular income tax &mdash; you're paying both the employee and employer share of Social Security and Medicare. This calculator splits the two out so you can see exactly where the money is going.</p>
+        <p>Vehicle mileage is one of the largest deductions available to a mobile trade like plumbing, which is why it gets its own line here instead of being buried in &ldquo;other expenses.&rdquo; Track it consistently, not just at tax time, since the IRS standard rate changes every year.</p>
+        <p>The reason to reserve by pay period rather than waiting until tax time is simple: the money already isn't yours the day you earn it. Moving your estimated reserve to a separate account the same day you deposit revenue keeps a good month from turning into an ugly April.</p>
+        <p>This is a planning estimate, not a substitute for a tax professional who knows your entity type, state, and deductions.</p>
+      </div>
+    </div>
+
+    <div class="card" id="business-runway">
+      <h2>Business Runway Calculator</h2>
+      <p>See how many months your savings would cover you with no income.</p>
+      <p class="privacy-note">&#128274; Runs entirely in your browser &mdash; nothing you enter is sent or stored.</p>
+      <button type="button" class="clear-link" id="runway_clearBtn">Clear and enter your own numbers</button>
+
+      <label for="savings">Total current savings</label>
+      <p class="field-hint">The full amount you have saved right now &mdash; not a monthly figure.</p>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="savings" value="22000">
+      </div>
+
+      <label for="monthlyExpenses">Average monthly personal expenses</label>
+      <div class="input-group">
+        <span class="input-prefix">$</span>
+        <input type="number" id="monthlyExpenses" value="4300">
+      </div>
+
+      <button id="runwayBtn">Calculate Runway</button>
+
+      <div id="runwayResult" class="result"></div>
+
+      <p class="section-divider">About This Business Runway Calculator</p>
+      <div class="calc-explainer">
+        <p>Runway answers a simple but uncomfortable question: if the phone stopped ringing tomorrow, how long could you keep the doors open and pay yourself? Most plumbing business owners have never actually run this number.</p>
+        <p>This calculator intentionally uses your personal savings and personal expenses, not the business's bank account &mdash; the goal is to know how long you could hold on personally while you rebuild the schedule, not how long the business entity survives on paper.</p>
+        <p>Contractors with seasonal swings (burst-pipe season in winter, slower stretches in between) get the most value from running this right before their historically slowest month, not right after a strong one.</p>
+        <p>A short runway isn't a reason to panic; it's a reason to build a small buffer intentionally, the same way you'd stock a slow-moving part before you actually need it.</p>
+      </div>
+    </div>
+
+    <div class="cta" id="cta">
+      <p class="cta-eyebrow">&#128703; PLUMBING BUSINESS CFO</p>
+      <h2>Know which jobs make money, what you should charge, and where your business is leaking profit.</h2>
+      <p>The free tools above answer one question at a time. The full workbook gives you ongoing control&mdash;every job, every month, in one place.</p>
+
+      <div class="product-screenshots">
+        <img src="images/screenshot-dashboard.png" alt="Plumbing Business CFO Dashboard tab showing revenue, job profit, margin, break-even, and profit warnings" class="product-screenshot">
+        <img src="images/screenshot-quotecalculator.png" alt="Plumbing Business CFO Quote Calculator tab showing direct costs, job economics, and a recommended quote" class="product-screenshot">
+        <img src="images/screenshot-jobtracker.png" alt="Plumbing Business CFO Job Tracker tab showing logged jobs with materials, labor, and profit per job" class="product-screenshot">
+      </div>
+
+      <div class="cta-compare">
+        <div class="cta-compare-col">
+          <h4>Free tools</h4>
+          <p>Answer one question, once, then you're back to guessing next week.</p>
+        </div>
+        <div class="cta-compare-col">
+          <h4>The workbook</h4>
+          <p>Every job, every dollar, tracked automatically&mdash;so the answer is always current.</p>
+        </div>
+      </div>
+
+      <p class="product-track-label">Includes:</p>
+      <ul class="product-checklist">
+        <li>Job costing</li>
+        <li>Quote calculator</li>
+        <li>Job tracker</li>
+        <li>Material &amp; labor tracking</li>
+        <li>Labor rate calculator</li>
+        <li>Overhead budget vs. actual</li>
+        <li>Profit &amp; margin dashboard</li>
+        <li>Tax reserve</li>
+        <li>Monthly cash flow</li>
+        <li>Annual P&amp;L</li>
+        <li>Business runway</li>
+      </ul>
+
+      <div class="product-badges">
+        <span class="product-badge">Excel + Google Sheets</span>
+        <span class="product-badge">Built for plumbing contractors</span>
+      </div>
+
+      <a href="#" id="ctaButton" class="cta-button" target="_blank" rel="noopener">Get The Plumbing Business CFO &rarr;</a>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>Is this tax advice?</h3>
+        <p>No. The tax reserve calculator combines a standard self-employment tax estimate (15.3%) with the federal bracket you select, for planning purposes only. It doesn't account for deductions, credits, state tax, or entity type. Always confirm your actual tax obligations with a licensed tax professional.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Does this work if I run an LLC or S-corp, not a sole proprietorship?</h3>
+        <p>The tax reserve calculator assumes sole proprietor or single-member LLC self-employment tax rules. If you're taxed as an S-corp or have employees on payroll, your actual tax picture is different&mdash;talk to your accountant.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is my data safe?</h3>
+        <p>Yes &mdash; these calculators run entirely in your browser. Nothing you type here is sent anywhere or stored.</p>
+      </div>
+    </div>
+
+    <div class="more-tools">
+      <p class="more-tools-title">More Free Tools</p>
+      <p class="more-tools-subtitle">Free calculators for other trades from Mundusflow.</p>
+      <div class="more-tools-links">
+        <a href="https://mundusflow.github.io/auto-shop-cfo/">&#128295; Auto Shop CFO</a>
+        <a href="https://mundusflow.github.io/electrician-business-cfo/">&#9889; Electrician Business CFO</a>
+        <a href="https://mundusflow.github.io/freelance-tax-runway-estimator/">&#128188; Freelance CFO</a>
+        <a href="https://mundusflow.github.io/">&#129520; All Free Calculators</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="stickyBar" class="sticky-bar">
+    <div class="sticky-bar-inner">
+      <div class="sticky-bar-text">
+        <span class="sticky-bar-title">&#128703; Plumbing Business CFO</span>
+        <span class="sticky-bar-subtitle">Your job costing, quoting &amp; tax reserve workbook</span>
+      </div>
+      <a href="#" class="sticky-bar-button" target="_blank" rel="noopener">
+        <span class="sticky-bar-button-text">Get Instant Access</span>
+        <span class="sticky-bar-button-price">Coming soon</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span id="lightboxClose" class="lightbox-close">&times;</span>
+    <img id="lightboxImg" class="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="script.js?v=1"></script>
+</body>
+</html>
