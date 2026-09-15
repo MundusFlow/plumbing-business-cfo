@@ -645,6 +645,14 @@ button:hover {
   border-radius: 4px;
 }
 
+.lead-magnet {
+  text-align: center;
+}
+
+.lead-magnet .cta-button {
+  margin-top: 8px;
+}
+
 .cta-alt-link {
   margin: 12px 0 0 0;
   font-size: 13px;
