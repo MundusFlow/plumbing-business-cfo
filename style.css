@@ -19,12 +19,10 @@ body {
 }
 
 .calculators-grid {
-  max-width: 920px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: start;
-  gap: 24px;
+  gap: 20px;
 }
 
 .calculators-grid .card {
@@ -35,6 +33,7 @@ body {
   .calculators-grid {
     grid-template-columns: 1fr;
     max-width: 480px;
+    margin: 0 auto;
   }
 }
 
