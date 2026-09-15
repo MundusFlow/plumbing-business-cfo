@@ -71,6 +71,46 @@ body {
   outline-offset: 2px;
 }
 
+.brandbar-free-btn {
+  background-color: #FFC000;
+  color: #1F3864 !important;
+  font-size: 12.5px;
+  font-weight: bold;
+  padding: 7px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.brandbar-free-btn:hover {
+  background-color: #E6AC00;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.quicknav a {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.quicknav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .hero {
   background-color: #1F3864;
   text-align: center;
