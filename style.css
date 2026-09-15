@@ -33,6 +33,22 @@ body {
   border-radius: 6px;
 }
 
+.brandbar-inner a {
+  display: inline-flex;
+  border-radius: 6px;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.brandbar-inner a:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.brandbar-inner a:focus-visible {
+  outline: 2px solid #FFC000;
+  outline-offset: 2px;
+}
+
 .hero {
   background-color: #1F3864;
   text-align: center;
