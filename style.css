@@ -19,16 +19,26 @@ body {
 }
 
 .calculators-grid {
-  max-width: 920px;
+  max-width: 1390px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
   align-items: start;
   gap: 20px;
 }
 
 .calculators-grid .card {
   margin-bottom: 0;
+  grid-column: span 2;
+}
+
+.calculators-grid .card:last-child:nth-child(3n+1) {
+  grid-column: span 6;
+}
+
+.calculators-grid .card:nth-last-child(2):nth-child(3n+1),
+.calculators-grid .card:nth-last-child(2):nth-child(3n+1) ~ .card {
+  grid-column: span 3;
 }
 
 @media (max-width: 700px) {
@@ -36,6 +46,13 @@ body {
     grid-template-columns: 1fr;
     max-width: 480px;
     margin: 0 auto;
+  }
+
+  .calculators-grid .card,
+  .calculators-grid .card:last-child:nth-child(3n+1),
+  .calculators-grid .card:nth-last-child(2):nth-child(3n+1),
+  .calculators-grid .card:nth-last-child(2):nth-child(3n+1) ~ .card {
+    grid-column: auto;
   }
 }
 
